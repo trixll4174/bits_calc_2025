@@ -1,9 +1,8 @@
 # asks users for file type (integer, image, text, xxx)
 
 def get_filetype():
-    response = input("File type: ").lower()
     while True:
-
+        response = input("File type: ").lower()
         # check i or the exit code
         if response == "xxx" or response == "i":
             return response

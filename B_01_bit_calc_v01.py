@@ -60,14 +60,54 @@ def int_check(question, low):
             print(error)
 
 
+def integer_check(question, low):
+        even_worse_error = "Please enter an integer more than 0"
+        error = f"Please enter an integer (i.e: a positive number without a decimal part)"
+        while True:
+
+            try:
+                # ask the user for a number
+                response = int(input(question))
+                # check the number is more than zero
+                if response > low:
+                    return response
+                elif response == low:
+                    print(even_worse_error)
+                else:
+                    print(error)
+
+            except ValueError:
+                print(error)
+
+
+def integer_for_image_check(question, low):
+    bad_error = "Please enter an integer that is more than 0"
+    error = f"Please enter an integer (i.e: a positive number without a decimal part)"
+    while True:
+
+        try:
+            # ask the user for a number
+            response = int(input(question))
+            # check the number is more than zero
+            if response > low:
+                return response
+            elif response == low:
+                print(bad_error)
+            else:
+                print(error)
+
+        except ValueError:
+            print(error)
+
+
 # calculates how many bits are needed to represent an image
 def image_calc():
     pass
 
     # Main routine goes here
 
-    width = int_check("Width: ", 1)
-    height = int_check("Height: ", 1)
+    width = integer_for_image_check("Width: ", 0)
+    height = integer_for_image_check("Height: ", 0)
 
     # calcs pixels and calcs bits
     num_pixels = width * height
@@ -83,7 +123,7 @@ def image_calc():
 # calculates how many bits are needed to represent an integer
 def int_calc():
     # ask the user to enter an integer (more than / equal to 0)
-    integer = int_check("Integer: ", 0)
+    integer = integer_check("Integer: ", 0)
 
     # convert the integer to raw_binary and work out bits needed
     raw_binary = bin(integer)
